@@ -12,6 +12,7 @@ namespace Water_Bills
 {
     public partial class AddInvoiceUserControl : UserControl
     {
+        public ManageInvoices ListInvoices;
         public AddInvoiceUserControl()
         {
             InitializeComponent();
@@ -54,7 +55,6 @@ namespace Water_Bills
                     price = 15929;
                     envFee = 1592.9;
                 }
-
             }
             else if (customerType == "Administrative agency, public services")
             {
@@ -93,6 +93,9 @@ namespace Water_Bills
                 amountConsumption,
                 price, envFee, VATFee, subtotal, total
                 );
+            
+            ListInvoices.AddInvoice( invoice );
+
             resultSubtotal.Text = Math.Round(subtotal,2).ToString();
             resultEnvFee.Text = Math.Round(envFee, 2).ToString();  
             resultVATFee.Text = Math.Round(VATFee, 2).ToString();
